@@ -1,450 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Venta de Artículos de Ferretería</title>
-  <meta name="description" content="Venta de artículos de ferretería: mechas, tornillos, tarugos, cintas, calefón, silicona acética, École, La gotita, parches, solución e inflador. ¡Y muchas cosas más!" />
+  <meta charset="UTF-8">
+  <title>Ferretería Las Casitas | Artículos de Ferretería</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    // WhatsApp (formato wa.me: sin +, sin espacios, sin guiones)
-    const WHATSAPP_JENNI = "https://wa.me/5491130301931?text=Hola%20Jenni%2C%20quiero%20ver%20las%20ofertas%20de%20ferreter%C3%ADa%20🙏";
-    const WHATSAPP_NICO  = "https://wa.me/5491138615007?text=Hola%20Nico%2C%20quiero%20ver%20las%20ofertas%20de%20ferreter%C3%ADa%20🙏";
+  <!-- SEO -->
+  <meta name="description" content="Ferretería Las Casitas. Mechas, tornillos, tarugos, cintas, calefones, silicona y mucho más. Consultá ofertas por WhatsApp.">
 
-    const TEL_JENNI = "+54 9 11 3030-1931";
-    const TEL_NICO  = "+54 9 11 3861-5007";
-  </script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ferretería Las Casitas">
+  <meta property="og:description" content="Todo en artículos de ferretería. Consultá ofertas por WhatsApp.">
+  <meta property="og:type" content="website">
 
   <style>
-    :root{
-      --bg:#0b0d10;
-      --panel: rgba(255,255,255,.06);
-      --text:#f3f6ff;
-      --muted: rgba(243,246,255,.75);
-      --shadow: 0 16px 60px rgba(0,0,0,.45);
-      --radius: 22px;
-      --accent: #ff8a00;
-      --accent2: rgba(255,138,0,.18);
-      --line: rgba(255,255,255,.14);
+    * {
+      box-sizing: border-box;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(255,255,255,.12), transparent 60%),
-        radial-gradient(900px 500px at 90% 0%, rgba(255,255,255,.08), transparent 55%),
-        radial-gradient(900px 500px at 70% 110%, rgba(255,255,255,.08), transparent 55%),
-        linear-gradient(180deg, #0b0d10 0%, #07090c 100%);
-      overflow-x:hidden;
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #000;
+      color: #fff;
     }
 
-    .wrap{ width:min(1050px, 92vw); margin:0 auto; padding: 26px 0 40px; }
-    .accent{ color: var(--accent); font-weight: 1000; }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 12px; border-radius: 14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-weight:900; letter-spacing:.4px; text-transform:uppercase; font-size:12px;
-      color: rgba(255,255,255,.88);
-    }
-    .pill.orange{
-      border-color: rgba(255,138,0,.35);
-      background: linear-gradient(180deg, rgba(255,138,0,.16), rgba(255,255,255,.04));
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
     }
 
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(11,13,16,.88), rgba(11,13,16,.40));
-      border-bottom:1px solid rgba(255,255,255,.10);
-    }
-    .topbar{
-      width:min(1050px, 92vw);
-      margin:0 auto;
-      padding: 12px 0; /* un toque menos para que el logo grande entre perfecto */
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 2px solid #ff7a00;
     }
 
-    /* ✅ Logo GRANDE en esquina superior izquierda */
-    .brand{
-      display:flex; align-items:center; gap:10px;
-    }
-    .brand-logo{
-      height: 72px;       /* <-- MÁS GRANDE */
-      width: auto;
-      display:block;
-      filter: drop-shadow(0 10px 24px rgba(0,0,0,.35));
-    }
-    @media (max-width: 860px){
-      .brand-logo{ height: 60px; }
-    }
-    @media (max-width: 420px){
-      .brand-logo{ height: 52px; }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      color: #ff7a00;
+      letter-spacing: 2px;
     }
 
-    .top-actions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
-
-    .btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-weight: 900;
-      letter-spacing:.2px;
-      cursor:pointer;
-      transition:.18s transform, .18s background, .18s border-color;
-      text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.24);
-    }
-    .btn:active{transform: translateY(0px) scale(.99)}
-    .btn.primary{
-      border-color: rgba(255,138,0,.40);
-      background: linear-gradient(180deg, rgba(255,138,0,.22), rgba(255,255,255,.06));
+    .hero h2 {
+      font-size: 20px;
+      font-weight: normal;
+      color: #ddd;
     }
 
-    /* Hero */
-    .hero{ padding: 34px 0 18px; }
-    .hero-card{
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 220px at 20% 0%, rgba(255,255,255,.18), transparent 60%),
-        radial-gradient(520px 220px at 90% 30%, rgba(255,138,0,.14), transparent 60%);
-      pointer-events:none;
-      opacity:.95;
-    }
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      align-items:stretch;
-    }
-    @media (max-width: 860px){ .hero-grid{grid-template-columns: 1fr} }
-
-    .kicker{
-      font-weight:1000; letter-spacing: 1px; text-transform:uppercase;
-      font-size: 13px; color: rgba(255,255,255,.80);
-      margin: 0 0 8px;
-    }
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(34px, 4.4vw, 56px);
-      line-height:1.0;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-    }
-    .sub{
-      margin:0 0 12px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height:1.45;
-      max-width: 64ch;
-    }
-    .sub strong{ color: var(--accent); font-weight:1000; }
-
-    .hero-side{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      border-radius: 18px;
-      padding: 16px;
-      display:flex; flex-direction:column; justify-content:space-between; gap:12px;
+    /* LISTA */
+    .items {
+      padding: 50px 0;
+      text-align: center;
     }
 
-    .list{ margin:0; padding: 0; list-style:none; display:grid; gap:10px; }
-    .li{
-      display:flex; gap:10px; align-items:flex-start;
-      padding: 10px 12px; border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+    .items h3 {
+      font-size: 28px;
+      color: #ff7a00;
+      margin-bottom: 30px;
     }
-    .li .ico{
-      width:26px; height:26px; border-radius:10px;
-      display:grid; place-items:center;
-      background: rgba(255,138,0,.18);
-      border:1px solid rgba(255,138,0,.24);
-      flex: 0 0 auto;
-      margin-top:1px;
-      font-weight:1000;
-      color: var(--accent);
-    }
-    .li .txt{ font-weight:900; color: rgba(255,255,255,.92); }
 
-    .bigline{
-      margin: 14px 0 0;
-      padding-top: 14px;
-      border-top:1px solid rgba(255,255,255,.12);
-      font-weight: 1100;
-      text-transform: uppercase;
-      letter-spacing: .8px;
+    .items ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .items li {
+      background: #111;
+      margin-bottom: 12px;
+      padding: 15px;
+      border-left: 5px solid #ff7a00;
       font-size: 18px;
-    }
-
-    .sell{
-      margin-top:10px;
-      display:grid;
-      gap:8px;
-    }
-    .sell p{
-      margin:0;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,138,0,.25);
-      background: rgba(255,138,0,.10);
-      color: rgba(255,255,255,.92);
-      font-weight:900;
-      line-height:1.35;
     }
 
     /* CTA */
-    .cta{
-      margin-top: 18px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: var(--radius);
-      padding: 18px 18px;
-      box-shadow: 0 10px 50px rgba(0,0,0,.22);
+    .cta {
+      background: #ff7a00;
+      color: #000;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
     }
-    .cta h2{
-      margin:0;
+
+    .cta h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
       font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: .7px;
+      margin-bottom: 25px;
     }
-    .cta p{ margin:8px 0 0; color: var(--muted); line-height:1.5; }
-    .cta p b{ color: var(--accent); }
 
-    /* Contacts */
-    .section{ margin-top: 18px; }
-    .section-title{
-      margin:0 0 10px;
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn {
+      background: #000;
+      color: #ff7a00;
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid #000;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #111;
+      transform: scale(1.05);
+    }
+
+    /* UBICACIÓN */
+    .location {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 16px;
+      border-top: 2px solid #ff7a00;
+      color: #ccc;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 15px;
       font-size: 14px;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.80);
-    }
-
-    .contacts{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width: 860px){ .contacts{grid-template-columns: 1fr} }
-
-    .card{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 12px 50px rgba(0,0,0,.22);
-      display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-    .who{ display:flex; flex-direction:column; gap:4px; min-width: 240px; }
-    .name{ font-weight: 1100; font-size: 18px; letter-spacing:.2px; }
-    .role{ font-weight: 900; color: rgba(255,255,255,.72); font-size: 13px; }
-    .phone{
-      font-weight: 1000;
-      color: rgba(255,255,255,.92);
-      padding: 8px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,138,0,.22);
-      background: rgba(255,138,0,.10);
-      letter-spacing:.2px;
-      white-space:nowrap;
-    }
-    .card .btn{ margin-left:auto; }
-
-    /* Address */
-    .address{
-      margin-top: 18px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: var(--radius);
-      padding: 16px 18px;
-      text-align:center;
-      box-shadow: 0 12px 50px rgba(0,0,0,.18);
-    }
-    .address .line1{
-      font-style: italic;
-      font-weight: 1000;
-      letter-spacing:.2px;
-      color: rgba(255,255,255,.92);
-    }
-    .address .line2{
-      margin-top:6px;
-      font-weight: 1100;
-      letter-spacing:.4px;
-      color: rgba(255,255,255,.95);
+      background: #000;
+      color: #666;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="topbar">
-      <div class="brand">
-        <img class="brand-logo" src="https://iili.io/fabWsJj.png" alt="Logo Ferretería">
-      </div>
 
-      <div class="top-actions">
-        <a class="btn" href="#contactos">Contactos</a>
-        <a class="btn primary" id="btnTopJenni" href="#">Agendar a Jenni</a>
-        <a class="btn primary" id="btnTopNico" href="#">Agendar a Nico</a>
-      </div>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>FERRETERÍA LAS CASITAS</h1>
+    <h2>Venta de artículos de ferretería</h2>
+  </section>
+
+  <!-- ITEMS -->
+  <section class="items container">
+    <h3>Tenemos todo lo que necesitás</h3>
+    <ul>
+      <li>🔧 Mechas, tornillos, tarugos</li>
+      <li>🧻 Cinta aislante, scotch y de papel</li>
+      <li>🔥 Calefón, resistencia, flotador</li>
+      <li>🧴 Silicona acética, École, La Gotita</li>
+      <li>🛞 Parches, solución, inflador</li>
+      <li>➕ ¡Y muchas cosas más!</li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h3>📲 Consultá nuestras ofertas</h3>
+    <p>Escribinos por WhatsApp y te respondemos al instante</p>
+
+    <div class="buttons">
+      <a class="btn" href="https://wa.me/?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
+        WhatsApp Nico Cuenca
+      </a>
+
+      <a class="btn" href="https://wa.me/?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
+        WhatsApp Jennifer Ayala
+      </a>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap">
-    <section class="hero" id="inicio">
-      <div class="hero-card">
-        <div class="hero-grid">
-          <div>
-            <p class="kicker">Venta de artículos de</p>
-            <h1>FERRETERÍA</h1>
+  <!-- UBICACIÓN -->
+  <section class="location">
+    📍 Nos encontramos en B° N. Kirchner<br>
+    Manzana N°18 – Casa N°20
+  </section>
 
-            <p class="sub">
-              <strong>Consultá por WhatsApp</strong> y te pasamos ofertas al toque.
-              Ideal para el hogar y el laburo: <span class="accent">rápido</span>, <span class="accent">claro</span> y sin vueltas.
-            </p>
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Ferretería Las Casitas
+  </footer>
 
-            <ul class="list">
-              <li class="li"><div class="ico">✂</div><div class="txt">Mechas, tornillos, tarugos</div></li>
-              <li class="li"><div class="ico">✂</div><div class="txt">Cinta aislante, Scotch, de papel</div></li>
-              <li class="li"><div class="ico">✂</div><div class="txt">Calefón, resistencia, flotador</div></li>
-              <li class="li"><div class="ico">✂</div><div class="txt">Silicona acética, École, La gotita</div></li>
-              <li class="li"><div class="ico">✂</div><div class="txt">Parches, solución, inflador</div></li>
-            </ul>
-
-            <div class="bigline">¡Y MUCHAS COSAS MÁS!</div>
-
-            <div class="sell">
-              <p>🔥 <span class="accent">Precios para todos</span> — consultanos y te mandamos la mejor opción según lo que necesitás.</p>
-              <p>⚡ <span class="accent">Respuesta rápida</span> por WhatsApp — stock, medidas y alternativas en el momento.</p>
-              <p>🧰 <span class="accent">Lo básico y lo que falta</span> — si no lo ves en la lista, preguntá igual.</p>
-            </div>
-          </div>
-
-          <aside class="hero-side">
-            <div class="pill orange">AGENDANOS PARA VER LAS OFERTAS</div>
-
-            <div style="display:grid; gap:10px;">
-              <a class="btn primary" id="btnHeroJenni" href="#">Agendar a Jenni</a>
-              <a class="btn primary" id="btnHeroNico" href="#">Agendar a Nico</a>
-              <a class="btn" href="#ubicacion">Ver ubicación</a>
-            </div>
-
-            <div class="pill" style="justify-content:space-between;">
-              <span>Atención por WhatsApp</span>
-              <small style="opacity:.9; font-weight:900; color: var(--accent); text-transform:none;">Pedí promo del día</small>
-            </div>
-
-            <div style="display:grid; gap:10px; padding-top:6px;">
-              <div class="pill" style="justify-content:space-between;">
-                <span>Jenni</span>
-                <small id="telJenni" style="text-transform:none; opacity:.95; font-weight:1000;"></small>
-              </div>
-              <div class="pill" style="justify-content:space-between;">
-                <span>Nico</span>
-                <small id="telNico" style="text-transform:none; opacity:.95; font-weight:1000;"></small>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-
-      <div class="cta">
-        <h2>¡Agendanos para ver las ofertas!</h2>
-        <p>Escribinos y decinos qué necesitás. <b>Te respondemos rápido</b> y te pasamos opciones.</p>
-      </div>
-    </section>
-
-    <section class="section" id="contactos">
-      <div class="section-title">Contactos de WhatsApp</div>
-
-      <div class="contacts">
-        <div class="card">
-          <div class="who">
-            <div class="name">Jenni</div>
-            <div class="role">Contacto de WhatsApp</div>
-          </div>
-
-          <div class="phone" id="phoneJenni"></div>
-
-          <a class="btn primary" id="btnCardJenni" href="#">Abrir WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <div class="who">
-            <div class="name">Nico</div>
-            <div class="role">Contacto de WhatsApp</div>
-          </div>
-
-          <div class="phone" id="phoneNico"></div>
-
-          <a class="btn primary" id="btnCardNico" href="#">Abrir WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="address" id="ubicacion">
-      <div class="line1">Nos encontramos en B° N. Kirchner</div>
-      <div class="line2">Manzana N°18 Casa N°20</div>
-    </section>
-  </main>
-
-  <script>
-    function setLink(id, url){
-      const el = document.getElementById(id);
-      if(!el) return;
-      el.href = url;
-      el.target = "_blank";
-      el.rel = "noopener noreferrer";
-    }
-
-    // Botones Jenni
-    ["btnTopJenni","btnHeroJenni","btnCardJenni"].forEach(id => setLink(id, WHATSAPP_JENNI));
-    // Botones Nico
-    ["btnTopNico","btnHeroNico","btnCardNico"].forEach(id => setLink(id, WHATSAPP_NICO));
-
-    // Teléfonos visibles
-    const telJenEl = document.getElementById("telJenni");
-    const telNicoEl = document.getElementById("telNico");
-    const phoneJenEl = document.getElementById("phoneJenni");
-    const phoneNicoEl = document.getElementById("phoneNico");
-
-    if(telJenEl) telJenEl.textContent = TEL_JENNI;
-    if(telNicoEl) telNicoEl.textContent = TEL_NICO;
-    if(phoneJenEl) phoneJenEl.textContent = TEL_JENNI;
-    if(phoneNicoEl) phoneNicoEl.textContent = TEL_NICO;
-  </script>
 </body>
 </html>

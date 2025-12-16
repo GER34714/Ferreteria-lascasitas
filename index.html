@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO -->
-  <meta name="description" content="Ferretería Las Casitas. Mechas, tornillos, tarugos, cintas, calefones, silicona y mucho más. Consultá ofertas por WhatsApp.">
+  <meta name="description" content="Ferretería Las Casitas. Mechas, tornillos, tarugos, cintas, calefones, silicona y mucho más. Consultá por WhatsApp.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Ferretería Las Casitas">
-  <meta property="og:description" content="Todo en artículos de ferretería. Consultá ofertas por WhatsApp.">
+  <meta property="og:description" content="Todo en artículos de ferretería. Consultá por WhatsApp.">
   <meta property="og:type" content="website">
 
   <style>
@@ -21,8 +21,16 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #000;
+      background: url("https://iili.io/fabLNNp.jpg") center/cover fixed no-repeat;
       color: #fff;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: -1;
     }
 
     .container {
@@ -31,17 +39,22 @@
       padding: 30px 20px;
     }
 
+    /* COLOR PRINCIPAL (naranja suave) */
+    :root {
+      --naranja: #d8893a;
+    }
+
     /* HERO */
     .hero {
       text-align: center;
       padding: 60px 20px;
-      border-bottom: 2px solid #ff7a00;
+      border-bottom: 2px solid var(--naranja);
     }
 
     .hero h1 {
-      font-size: 42px;
+      font-size: 40px;
       margin-bottom: 10px;
-      color: #ff7a00;
+      color: var(--naranja);
       letter-spacing: 2px;
     }
 
@@ -58,8 +71,8 @@
     }
 
     .items h3 {
-      font-size: 28px;
-      color: #ff7a00;
+      font-size: 26px;
+      color: var(--naranja);
       margin-bottom: 30px;
     }
 
@@ -71,19 +84,20 @@
     }
 
     .items li {
-      background: #111;
+      background: rgba(0,0,0,0.65);
       margin-bottom: 12px;
       padding: 15px;
-      border-left: 5px solid #ff7a00;
+      border-left: 4px solid var(--naranja);
       font-size: 18px;
+      text-align: left;
     }
 
     /* CTA */
     .cta {
-      background: #ff7a00;
+      background: rgba(216,137,58,0.9);
       color: #000;
       text-align: center;
-      padding: 40px 20px;
+      padding: 45px 20px;
       margin-top: 40px;
     }
 
@@ -106,13 +120,14 @@
 
     .btn {
       background: #000;
-      color: #ff7a00;
+      color: var(--naranja);
       padding: 15px 25px;
       text-decoration: none;
       font-size: 18px;
       font-weight: bold;
       border: 2px solid #000;
       transition: 0.3s;
+      min-width: 260px;
     }
 
     .btn:hover {
@@ -125,8 +140,8 @@
       text-align: center;
       padding: 40px 20px;
       font-size: 16px;
-      border-top: 2px solid #ff7a00;
-      color: #ccc;
+      border-top: 2px solid var(--naranja);
+      color: #ddd;
     }
 
     /* FOOTER */
@@ -134,8 +149,8 @@
       text-align: center;
       padding: 15px;
       font-size: 14px;
-      background: #000;
-      color: #666;
+      background: rgba(0,0,0,0.6);
+      color: #aaa;
     }
   </style>
 </head>
@@ -150,7 +165,7 @@
 
   <!-- ITEMS -->
   <section class="items container">
-    <h3>Tenemos todo lo que necesitás</h3>
+    <h3>Todo lo que necesitás en un solo lugar</h3>
     <ul>
       <li>🔧 Mechas, tornillos, tarugos</li>
       <li>🧻 Cinta aislante, scotch y de papel</li>
@@ -163,15 +178,15 @@
 
   <!-- CTA -->
   <section class="cta">
-    <h3>📲 Consultá nuestras ofertas</h3>
-    <p>Escribinos por WhatsApp y te respondemos al instante</p>
+    <h3>📲 Consultá precios y ofertas</h3>
+    <p>Respondemos rápido por WhatsApp</p>
 
     <div class="buttons">
-      <a class="btn" href="https://wa.me/?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
+      <a class="btn" href="https://wa.me/5491138615007?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
         WhatsApp Nico Cuenca
       </a>
 
-      <a class="btn" href="https://wa.me/?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
+      <a class="btn" href="https://wa.me/5491130301931?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
         WhatsApp Jennifer Ayala
       </a>
     </div>

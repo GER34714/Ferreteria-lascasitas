@@ -1,207 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Ferretería Las Casitas | Artículos de Ferretería</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferretería | Venta de Artículos</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Ferretería Las Casitas. Mechas, tornillos, tarugos, cintas, calefones, silicona y mucho más. Consultá por WhatsApp.">
+<meta name="description" content="Venta de artículos de ferretería. Mechas, tornillos, tarugos, cintas, calefón, silicona y mucho más. Agendanos por WhatsApp.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ferretería Las Casitas">
-  <meta property="og:description" content="Todo en artículos de ferretería. Consultá por WhatsApp.">
-  <meta property="og:type" content="website">
+<!-- Open Graph -->
+<meta property="og:title" content="Ferretería | Venta de Artículos">
+<meta property="og:description" content="Todo en ferretería. Agendanos para ver las ofertas del día.">
+<meta property="og:type" content="website">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: url("https://iili.io/fabLNNp.jpg") center/cover fixed no-repeat;
-      color: #fff;
-    }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: -1;
-    }
+.card {
+  background: rgba(0,0,0,0.85);
+  border-radius: 14px;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px;
+  box-shadow: 0 0 30px rgba(0,0,0,.6);
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px 20px;
-    }
+h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
 
-    /* COLOR PRINCIPAL (naranja suave) */
-    :root {
-      --naranja: #d8893a;
-    }
+h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  opacity: .9;
+  margin-bottom: 25px;
+}
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      border-bottom: 2px solid var(--naranja);
-    }
+.lista {
+  margin-bottom: 25px;
+}
 
-    .hero h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-      color: var(--naranja);
-      letter-spacing: 2px;
-    }
+.lista li {
+  margin-bottom: 10px;
+  list-style: none;
+  padding-left: 24px;
+  position: relative;
+}
 
-    .hero h2 {
-      font-size: 20px;
-      font-weight: normal;
-      color: #ddd;
-    }
+.lista li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #00ff88;
+}
 
-    /* LISTA */
-    .items {
-      padding: 50px 0;
-      text-align: center;
-    }
+.cta {
+  text-align: center;
+  margin-top: 25px;
+}
 
-    .items h3 {
-      font-size: 26px;
-      color: var(--naranja);
-      margin-bottom: 30px;
-    }
+.btn {
+  display: block;
+  text-decoration: none;
+  background: #00ff88;
+  color: #000;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  transition: .2s;
+}
 
-    .items ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: auto;
-    }
+.btn:hover {
+  background: #00cc6e;
+}
 
-    .items li {
-      background: rgba(0,0,0,0.65);
-      margin-bottom: 12px;
-      padding: 15px;
-      border-left: 4px solid var(--naranja);
-      font-size: 18px;
-      text-align: left;
-    }
+.direccion {
+  text-align: center;
+  font-size: 14px;
+  opacity: .9;
+  margin-top: 20px;
+}
 
-    /* CTA */
-    .cta {
-      background: rgba(216,137,58,0.9);
-      color: #000;
-      text-align: center;
-      padding: 45px 20px;
-      margin-top: 40px;
-    }
-
-    .cta h3 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .cta p {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .btn {
-      background: #000;
-      color: var(--naranja);
-      padding: 15px 25px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      border: 2px solid #000;
-      transition: 0.3s;
-      min-width: 260px;
-    }
-
-    .btn:hover {
-      background: #111;
-      transform: scale(1.05);
-    }
-
-    /* UBICACIÓN */
-    .location {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 16px;
-      border-top: 2px solid var(--naranja);
-      color: #ddd;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      background: rgba(0,0,0,0.6);
-      color: #aaa;
-    }
-  </style>
+.footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: .6;
+  margin-top: 25px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>FERRETERÍA LAS CASITAS</h1>
-    <h2>Venta de artículos de ferretería</h2>
-  </section>
+<section class="hero">
+  <div class="card">
 
-  <!-- ITEMS -->
-  <section class="items container">
-    <h3>Todo lo que necesitás en un solo lugar</h3>
-    <ul>
-      <li>🔧 Mechas, tornillos, tarugos</li>
-      <li>🧻 Cinta aislante, scotch y de papel</li>
-      <li>🔥 Calefón, resistencia, flotador</li>
-      <li>🧴 Silicona acética, École, La Gotita</li>
-      <li>🛞 Parches, solución, inflador</li>
-      <li>➕ ¡Y muchas cosas más!</li>
+    <h1>FERRETERÍA</h1>
+    <h2>Venta de artículos</h2>
+
+    <ul class="lista">
+      <li>Mechas, tornillos, tarugos</li>
+      <li>Cinta aislante, Scotch, de papel</li>
+      <li>Calefón, resistencia, flotador</li>
+      <li>Silicona acética, Ecole, La gotita</li>
+      <li>Parches, solución, inflador</li>
+      <li><strong>¡Y muchas cosas más!</strong></li>
     </ul>
-  </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h3>📲 Consultá precios y ofertas</h3>
-    <p>Respondemos rápido por WhatsApp</p>
-
-    <div class="buttons">
-      <a class="btn" href="https://wa.me/5491138615007?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
-        WhatsApp Nico Cuenca
+    <div class="cta">
+      <a class="btn" href="https://wa.me/5491138615007" target="_blank">
+        📲 Contactar a Nico Cuenca
       </a>
 
-      <a class="btn" href="https://wa.me/5491130301931?text=Hola%20quiero%20consultar%20por%20productos%20de%20la%20ferretería" target="_blank">
-        WhatsApp Jennifer Ayala
+      <a class="btn" href="https://wa.me/5491130301931" target="_blank">
+        📲 Contactar a Jennifer Ayala
       </a>
     </div>
-  </section>
 
-  <!-- UBICACIÓN -->
-  <section class="location">
-    📍 Nos encontramos en B° N. Kirchner<br>
-    Manzana N°18 – Casa N°20
-  </section>
+    <div class="direccion">
+      📍 B° N. Kirchner<br>
+      Manzana N°18 – Casa N°20
+    </div>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 Ferretería Las Casitas
-  </footer>
+    <div class="footer">
+      Agendanos para ver las ofertas del día
+    </div>
+
+  </div>
+</section>
 
 </body>
 </html>

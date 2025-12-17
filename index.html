@@ -3,125 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ferretería | Venta de Artículos</title>
+  <title>Ferretería | Ofertas del día por WhatsApp</title>
 
   <!-- SEO -->
-  <meta name="description" content="Venta de artículos de ferretería. Mechas, tornillos, tarugos, cintas, calefón, silicona y mucho más. Agendanos por WhatsApp para ver las ofertas del día." />
+  <meta name="description" content="Venta de artículos de ferretería. Mechas, tornillos, tarugos, cintas, calefón, silicona y mucho más. Pedí ofertas del día por WhatsApp." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Ferretería | Venta de Artículos" />
-  <meta property="og:description" content="Agendanos por WhatsApp para ver las ofertas del día. ¡Y muchas cosas más!" />
+  <meta property="og:title" content="Ferretería | Ofertas del día por WhatsApp" />
+  <meta property="og:description" content="Agendanos y pedí ofertas del día. Mechas, tornillos, tarugos, cintas, calefón, silicona y mucho más." />
   <meta property="og:type" content="website" />
 
   <style>
-    /* -------------------------
-      RESET + VARIABLES
-    -------------------------- */
+    /* =========================
+       RESET + VARIABLES
+    ========================== */
     *, *::before, *::after { box-sizing: border-box; }
     html, body { height: 100%; }
-    body {
+    body{
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 50% 0%, rgba(0,255,136,.12), transparent 55%),
-                  radial-gradient(900px 600px at 10% 100%, rgba(0,180,255,.10), transparent 55%),
-                  #0f0f12;
       color: #fff;
-      line-height: 1.35;
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(0,255,136,.14), transparent 55%),
+        radial-gradient(1000px 650px at 90% 100%, rgba(0,170,255,.12), transparent 60%),
+        radial-gradient(800px 500px at 50% 50%, rgba(255,120,0,.10), transparent 55%),
+        #0b0c0f;
+      overflow-x: hidden;
     }
 
     :root{
-      --bg-card: rgba(0,0,0,.72);
-      --border: rgba(255,255,255,.10);
-      --muted: rgba(255,255,255,.70);
+      --max: 1100px;
+      --card: rgba(0,0,0,.68);
+      --border: rgba(255,255,255,.11);
+      --muted: rgba(255,255,255,.72);
       --muted2: rgba(255,255,255,.55);
       --accent: #00ff88;
       --accent2: #00cc6e;
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
-      --radius: 18px;
-      --pad: 26px;
-      --max: 980px;
+      --warn: #ffb14a;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --r: 18px;
     }
 
-    /* -------------------------
-      LAYOUT
-    -------------------------- */
+    a{ color: inherit; }
+
+    /* =========================
+       BACKGROUND DECOR
+    ========================== */
+    .bgGrid{
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .22;
+      pointer-events: none;
+      mask-image: radial-gradient(600px 400px at 50% 25%, #000 30%, transparent 70%);
+    }
+
+    .glow{
+      position: fixed;
+      width: 900px;
+      height: 900px;
+      left: 50%;
+      top: -320px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle at 50% 50%, rgba(0,255,136,.16), transparent 60%);
+      filter: blur(12px);
+      opacity: .9;
+      pointer-events: none;
+    }
+
+    /* =========================
+       LAYOUT
+    ========================== */
     .wrap{
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 28px 16px;
-    }
-
-    .container{
-      width: 100%;
       max-width: var(--max);
-      display: grid;
-      gap: 16px;
+      margin: 0 auto;
+      padding: 18px 16px 110px;
+      position: relative;
+      z-index: 2;
     }
 
-    .card{
-      background: var(--bg-card);
+    .topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0 18px;
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.40);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .card__inner{
-      padding: var(--pad);
-    }
-
-    /* -------------------------
-      HEADER
-    -------------------------- */
-    .brand{
-      text-align: center;
-      padding: 22px var(--pad) 0;
-    }
-
-    .brand__kicker{
+      box-shadow: 0 10px 30px rgba(0,0,0,.30);
       font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted2);
-    }
-
-    .brand__title{
-      margin: 10px 0 6px;
-      font-size: clamp(30px, 4vw, 46px);
-      letter-spacing: .02em;
-      font-weight: 900;
-    }
-
-    .brand__subtitle{
-      margin: 0 0 18px;
       color: var(--muted);
-      font-size: 15px;
+      backdrop-filter: blur(6px);
     }
 
-    /* -------------------------
-      CONTENT
-    -------------------------- */
-    .grid{
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(0,255,136,.45);
+    }
+
+    .chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,177,74,.10);
+      border: 1px solid rgba(255,177,74,.25);
+      color: rgba(255,255,255,.88);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero{
       display: grid;
       gap: 16px;
       grid-template-columns: 1fr;
-      padding: 0 var(--pad) var(--pad);
     }
 
-    @media (min-width: 880px){
-      .grid{
-        grid-template-columns: 1.05fr .95fr;
-        align-items: start;
-      }
+    @media (min-width: 980px){
+      .hero{ grid-template-columns: 1.15fr .85fr; align-items: start; }
     }
 
-    .sectionTitle{
-      font-size: 14px;
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+    }
+
+    .cardPad{ padding: 22px; }
+
+    .kicker{
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
       color: var(--muted2);
+      margin: 0 0 10px;
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: .02em;
+      font-weight: 950;
+      line-height: 1.03;
+    }
+
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .quick{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    @media (min-width: 560px){
+      .quick{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .mini{
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.35);
+      padding: 12px 12px;
+      color: rgba(255,255,255,.90);
+    }
+    .mini strong{ display:block; margin-bottom: 4px; }
+    .mini span{ color: var(--muted); font-size: 13px; }
+
+    /* =========================
+       LISTA PRODUCTOS
+    ========================== */
+    .sectionTitle{
+      margin: 0 0 12px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .14em;
-      margin: 0 0 12px;
+      color: var(--muted2);
     }
 
     .list{
@@ -130,14 +211,12 @@
       display: grid;
       gap: 10px;
     }
-
     .list li{
       list-style: none;
-      padding-left: 26px;
       position: relative;
+      padding-left: 26px;
       color: rgba(255,255,255,.92);
     }
-
     .list li::before{
       content: "✔";
       position: absolute;
@@ -147,17 +226,25 @@
       font-weight: 900;
     }
 
-    .highlight{
-      font-weight: 900;
+    .pillRow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .pill{
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.88);
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.10);
     }
 
-    /* -------------------------
-      BUTTONS
-    -------------------------- */
-    .btnCol{
-      display: grid;
-      gap: 12px;
-    }
+    /* =========================
+       CTA / CONTACTOS
+    ========================== */
+    .btnCol{ display:grid; gap: 12px; }
 
     .btn{
       display: flex;
@@ -166,90 +253,281 @@
       gap: 12px;
       width: 100%;
       padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,.25);
+      border-radius: 16px;
       background: linear-gradient(180deg, var(--accent), var(--accent2));
       color: #07140f;
       text-decoration: none;
-      font-weight: 900;
+      font-weight: 950;
+      border: 1px solid rgba(0,0,0,.25);
+      box-shadow: 0 12px 30px rgba(0,255,136,.12);
       transition: transform .12s ease, filter .12s ease;
       will-change: transform;
-      box-shadow: 0 10px 28px rgba(0,255,136,.12);
     }
-
     .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
     .btn:active{ transform: translateY(0px); }
 
     .btn small{
       display: block;
       font-weight: 700;
-      opacity: .85;
+      opacity: .82;
     }
 
-    .btn__right{
-      opacity: .9;
-      font-weight: 900;
+    .btnGhost{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 850;
+      color: rgba(255,255,255,.92);
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.12);
+      transition: transform .12s ease, filter .12s ease;
     }
+    .btnGhost:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btnGhost:active{ transform: translateY(0px); }
 
-    /* -------------------------
-      INFO / FOOTER
-    -------------------------- */
-    .note{
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 13px;
+    .box{
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top: 16px;
+      padding-top: 16px;
+      color: rgba(255,255,255,.88);
     }
 
     .address{
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      color: rgba(255,255,255,.88);
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.30);
+      border: 1px solid rgba(255,255,255,.10);
       font-size: 14px;
+      color: rgba(255,255,255,.90);
+      line-height: 1.4;
     }
 
-    .fine{
-      margin: 14px 0 0;
+    /* =========================
+       FAQ
+    ========================== */
+    .faq{
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+    details{
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.30);
+      padding: 12px 12px;
+    }
+    summary{
+      cursor: pointer;
+      list-style: none;
+      font-weight: 850;
+      color: rgba(255,255,255,.92);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .ans{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       STICKY BOTTOM BAR
+    ========================== */
+    .bottomBar{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      padding: 10px 12px;
+      background: rgba(0,0,0,.65);
+      border-top: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      z-index: 99;
+    }
+
+    .bottomInner{
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 680px){
+      .bottomInner{ grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .bBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 950;
+      border: 1px solid rgba(0,0,0,.25);
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      color: #07140f;
+      box-shadow: 0 12px 26px rgba(0,255,136,.10);
+    }
+
+    .bBtn.secondary{
+      background: rgba(0,0,0,.35);
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: none;
+    }
+
+    /* =========================
+       TOAST
+    ========================== */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 86px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.78);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 120;
+      white-space: nowrap;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    .foot{
+      margin-top: 16px;
+      text-align: center;
       color: var(--muted2);
       font-size: 12px;
-      text-align: center;
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      * { scroll-behavior: auto !important; transition: none !important; }
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <div class="container card">
-      <!-- HEADER -->
-      <header class="brand">
-        <div class="brand__kicker">Venta de artículos de</div>
-        <h1 class="brand__title">FERRETERÍA</h1>
-        <p class="brand__subtitle">Agendanos para ver las ofertas del día</p>
-      </header>
+  <div class="glow"></div>
+  <div class="bgGrid"></div>
 
-      <!-- BODY -->
-      <section class="grid">
-        <div class="card__inner">
-          <h2 class="sectionTitle">Productos</h2>
-          <ul class="list" id="productos"></ul>
-          <p class="note">Consultanos por stock y precios. Sumamos productos todo el tiempo.</p>
-        </div>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="badge"><span class="dot"></span> Atención por WhatsApp • Consultá ofertas</div>
+      <div class="chip">📍 B° N. Kirchner • Mza 18 • Casa 20</div>
+    </div>
 
-        <div class="card__inner">
-          <h2 class="sectionTitle">Contactos WhatsApp</h2>
-          <div class="btnCol" id="contactos"></div>
+    <section class="hero">
+      <!-- HERO / INFO -->
+      <article class="card">
+        <div class="cardPad">
+          <p class="kicker">Venta de artículos de</p>
+          <h1>FERRETERÍA</h1>
+          <p class="sub">
+            Mandanos un WhatsApp y te pasamos <strong>las ofertas del día</strong> y disponibilidad.
+            Rápido, simple y sin vueltas.
+          </p>
 
-          <div class="address">
-            <div class="sectionTitle" style="margin:0 0 10px;">Dirección</div>
-            📍 B° N. Kirchner<br />
-            Manzana N°18 – Casa N°20
+          <div class="quick">
+            <div class="mini">
+              <strong>📦 Variedad</strong>
+              <span>Artículos para el hogar, obra y arreglos.</span>
+            </div>
+            <div class="mini">
+              <strong>⚡ Respuesta rápida</strong>
+              <span>Consultá y te respondemos por WhatsApp.</span>
+            </div>
           </div>
 
-          <div class="fine">¡Y muchas cosas más!</div>
+          <div style="margin-top:18px;">
+            <div class="sectionTitle">Algunos productos</div>
+            <ul class="list" id="productos"></ul>
+
+            <div class="pillRow">
+              <span class="pill">🔩 Tornillería</span>
+              <span class="pill">🧰 Herramientas</span>
+              <span class="pill">🧪 Pegamentos</span>
+              <span class="pill">🧻 Cintas</span>
+              <span class="pill">🚿 Repuestos</span>
+            </div>
+          </div>
         </div>
-      </section>
+      </article>
+
+      <!-- CONTACTO / ACCIONES -->
+      <aside class="card">
+        <div class="cardPad">
+          <div class="sectionTitle">Agendanos / Contacto</div>
+          <div class="btnCol" id="contactos"></div>
+
+          <a class="btnGhost" href="#" id="btnCopiarDir" aria-label="Copiar dirección">
+            📋 Copiar dirección
+          </a>
+
+          <div class="box">
+            <div class="sectionTitle" style="margin:0 0 10px;">Dirección</div>
+            <div class="address" id="direccionBox">
+              📍 <strong>B° N. Kirchner</strong><br />
+              Manzana N°18 – Casa N°20
+            </div>
+          </div>
+
+          <div class="faq">
+            <details>
+              <summary>¿Cómo pido las ofertas del día? <span>＋</span></summary>
+              <div class="ans">Tocás un botón de WhatsApp, mandás “Hola, quiero las ofertas del día” y te respondemos con precios y stock.</div>
+            </details>
+
+            <details>
+              <summary>¿Qué venden? <span>＋</span></summary>
+              <div class="ans">Mechas, tornillos, tarugos, cintas, repuestos (calefón/resistencia/flotador), siliconas, pegamentos y mucho más.</div>
+            </details>
+
+            <details>
+              <summary>¿Dónde están? <span>＋</span></summary>
+              <div class="ans">En B° N. Kirchner, Manzana N°18 – Casa N°20.</div>
+            </details>
+          </div>
+
+          <div class="foot">¡Y muchas cosas más! • Consultá por WhatsApp</div>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottomBar">
+    <div class="bottomInner">
+      <a class="bBtn" href="#" id="waPrincipal">📲 Pedir ofertas</a>
+      <a class="bBtn secondary" href="#"
+         id="btnCompartir">🔗 Compartir</a>
+      <a class="bBtn secondary" href="#" id="btnCopiarLink">📋 Copiar link</a>
     </div>
-  </main>
+  </div>
+
+  <div class="toast" id="toast">Listo ✅</div>
 
   <script>
     /* =========================
@@ -262,36 +540,111 @@
         "Calefón, resistencia, flotador",
         "Silicona acética, Ecole, La gotita",
         "Parches, solución, inflador",
-        "<span class='highlight'>¡Y muchas cosas más!</span>"
+        "<strong>¡Y muchas cosas más!</strong>"
       ],
       contactos: [
         { nombre: "Nico Cuenca", tel: "5491138615007" },
         { nombre: "Jennifer Ayala", tel: "5491130301931" }
       ],
-      mensajeWA: "Hola! Quiero ver las ofertas del día de ferretería."
+      mensajeWA: "Hola! Quiero ver las ofertas del día de ferretería.",
+      direccionTexto: "B° N. Kirchner - Manzana N°18 Casa N°20"
     };
 
     /* =========================
-       RENDER
+       HELPERS
     ========================== */
-    const $productos = document.getElementById("productos");
-    $productos.innerHTML = data.productos.map(item => `<li>${item}</li>`).join("");
+    const $ = (id) => document.getElementById(id);
 
-    const $contactos = document.getElementById("contactos");
-    const waText = encodeURIComponent(data.mensajeWA);
+    function toast(msg){
+      const t = $("toast");
+      t.textContent = msg || "Listo ✅";
+      t.classList.add("show");
+      clearTimeout(window.__t);
+      window.__t = setTimeout(()=> t.classList.remove("show"), 1400);
+    }
 
-    $contactos.innerHTML = data.contactos.map(c => {
-      const href = `https://wa.me/${c.tel}?text=${waText}`;
+    function waLink(tel){
+      const txt = encodeURIComponent(data.mensajeWA);
+      return `https://wa.me/${tel}?text=${txt}`;
+    }
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copiado ✅");
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        toast("Copiado ✅");
+      }
+    }
+
+    /* =========================
+       RENDER PRODUCTOS
+    ========================== */
+    $("productos").innerHTML = data.productos.map(p => `<li>${p}</li>`).join("");
+
+    /* =========================
+       RENDER CONTACTOS
+    ========================== */
+    $("contactos").innerHTML = data.contactos.map(c => {
       return `
-        <a class="btn" href="${href}" target="_blank" rel="noopener">
+        <a class="btn" href="${waLink(c.tel)}" target="_blank" rel="noopener">
           <div>
             📲 ${c.nombre}
             <small>WhatsApp directo</small>
           </div>
-          <div class="btn__right">→</div>
+          <div>→</div>
         </a>
       `;
     }).join("");
+
+    /* =========================
+       ACCIONES
+    ========================== */
+    // Botón principal: va al primer contacto
+    $("waPrincipal").addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(waLink(data.contactos[0].tel), "_blank", "noopener");
+    });
+
+    // Copiar dirección
+    $("btnCopiarDir").addEventListener("click", async (e) => {
+      e.preventDefault();
+      await copyText(data.direccionTexto);
+    });
+
+    // Copiar link actual
+    $("btnCopiarLink").addEventListener("click", async (e) => {
+      e.preventDefault();
+      await copyText(location.href);
+    });
+
+    // Compartir (si el celu lo soporta)
+    $("btnCompartir").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const payload = {
+        title: document.title,
+        text: "Ferretería: pedí las ofertas del día por WhatsApp",
+        url: location.href
+      };
+
+      if (navigator.share){
+        try{
+          await navigator.share(payload);
+        }catch(err){
+          // usuario canceló o error: no hacemos drama
+        }
+      }else{
+        await copyText(location.href);
+        toast("Tu celu no comparte: copié el link ✅");
+      }
+    });
   </script>
 </body>
 </html>
